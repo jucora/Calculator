@@ -1,0 +1,8 @@
+.buttonPanel {
+  display: flex;
+  flex-wrap: wrap;
+}
+.buttonGroup {
+  height: 100px;
+  width: 700px;
+}

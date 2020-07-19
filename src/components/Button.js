@@ -1,17 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const Button = props => {
-  const { buttonName } = props;
+const setWidth = (wide) => {
+  return wide ? "50%" : "25%";
+};
+
+const Button = (props) => {
+  const { buttonName, color, wide } = props;
+  const buttonStyle = {
+    backgroundColor: color,
+    width: setWidth(wide),
+    height: "100px",
+    fontSize: "32px",
+  };
   return (
-    <div>
-      <button type="button">{buttonName}</button>
-    </div>
+    <button className="button" type="button" style={buttonStyle}>
+      {buttonName}
+    </button>
   );
 };
 
 Button.defaultProps = {
-  buttonName: '',
+  buttonName: "",
+  color: "orange",
+  wide: false,
 };
 
 Button.propTypes = {

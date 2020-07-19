@@ -1,9 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Display.css";
 
 const Display = (props) => {
   const { result } = props;
-  return <div>{result}</div>;
+  return (
+    <div className="display">
+      <p className="result">{result}</p>
+    </div>
+  );
 };
 
 Display.propTypes = {
