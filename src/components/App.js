@@ -1,7 +1,7 @@
 import React from "react";
 import Display from "./Display";
 import ButtonPanel from "./ButtonPanel";
-import "../css/style.css";
+import "../css/style.scss";
 
 const App = () => {
   return (
