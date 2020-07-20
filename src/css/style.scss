@@ -8,6 +8,7 @@ $generalWidth: 700px;
   display: flex;
   flex-wrap: wrap;
   width: $generalWidth;
+
   .display {
     background: $displayBackground;
     display: flex;
@@ -20,12 +21,15 @@ $generalWidth: 700px;
     padding: 20px;
     align-items: center;
   }
+
   .buttonPanel {
     flex-wrap: wrap;
     display: flex;
+
     .buttonGroup {
       width: $generalWidth;
     }
+
     .button {
       border: 1px solid $whiteColor;
       height: $generalHeight;

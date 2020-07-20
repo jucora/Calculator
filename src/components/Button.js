@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Button = (props) => {
+const Button = props => {
   const { buttonName, color, wide } = props;
 
   return (
@@ -9,8 +9,8 @@ const Button = (props) => {
       className="button"
       type="button"
       style={{
-        width: `${wide ? "50%" : "25%"}`,
-        background: `${color ? color : null}`,
+        width: `${wide ? '50%' : '25%'}`,
+        background: `${color || null}`,
       }}
     >
       {buttonName}
@@ -19,13 +19,15 @@ const Button = (props) => {
 };
 
 Button.defaultProps = {
-  color: "orange",
-  buttonName: "",
+  color: 'orange',
+  buttonName: '',
   wide: false,
 };
 
 Button.propTypes = {
   buttonName: PropTypes.string,
+  color: PropTypes.string,
+  wide: PropTypes.bool,
 };
 
 export default Button;
