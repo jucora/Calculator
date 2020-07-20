@@ -4,11 +4,7 @@ import "./Display.css";
 
 const Display = (props) => {
   const { result } = props;
-  return (
-    <div className="display">
-      <p className="result">{result}</p>
-    </div>
-  );
+  return <div className="display">{result}</div>;
 };
 
 Display.propTypes = {

@@ -4,10 +4,9 @@
   height: 100px;
   justify-content: flex-end;
   width: 700px;
-}
-.result {
   color: white;
   font-weight: bold;
   font-size: 50px;
   padding: 20px;
+  align-items: center;
 }
