@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import Display from "./Display";
-import "../css/style.scss";
-import ButtonPanel from "./ButtonPanel";
-import calculate from "../logic/calculate";
+import React, { Component } from 'react';
+import Display from './Display';
+import '../css/style.scss';
+import ButtonPanel from './ButtonPanel';
+import calculate from '../logic/calculate';
 
 export default class App extends Component {
   constructor(props) {
@@ -10,48 +10,57 @@ export default class App extends Component {
     this.state = {
       total: null,
       next: null,
-      displayText: "",
+      displayText: '',
       afterResult: false,
     };
-    this.symbols = ["+", "-", "%", "÷", "x"];
-    this.numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    this.symbols = ['+', '-', '%', '÷', 'x'];
+    this.numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   }
 
   number(buttonName) {
-    let { total, next, afterResult } = this.state || {};
+    const {
+      total, next, afterResult, displayText,
+    } = this.state || {};
 
     if (afterResult) {
-      this.setState({ displayText: buttonName, afterResult: false });
-    }
-
-    if (this.numbers.includes(buttonName)) {
-      this.setState({ displayText: this.state.displayText + buttonName });
+      this.setState({
+        displayText: buttonName,
+        total: buttonName,
+        next: null,
+        afterResult: false,
+      });
+    } else if (this.numbers.includes(buttonName)) {
+      this.setState({
+        displayText: displayText + buttonName,
+      });
       if (!total) {
         this.setState({ total: buttonName });
       } else if (
-        total &&
-        !next &&
-        !this.symbols.includes(this.state.displayText.slice(-1))
+        total
+        && !next
+        && !this.symbols.includes(displayText.slice(-1))
       ) {
-        this.setState({ total: this.state.total + buttonName });
+        this.setState({ total: total + buttonName });
       } else if (
-        total &&
-        !next &&
-        this.symbols.includes(this.state.displayText.slice(-1))
+        total
+        && !next
+        && this.symbols.includes(displayText.slice(-1))
       ) {
         this.setState({ next: buttonName });
-      } else if (total && next && buttonName !== "=") {
-        this.setState({ next: this.state.next + buttonName });
+      } else if (total && next && buttonName !== '=') {
+        this.setState({ next: next + buttonName });
       }
     }
   }
 
   symbol(buttonName) {
-    let { total, next, operation, displayText } = this.state || {};
+    const {
+      total, next, operation, displayText,
+    } = this.state || {};
     if (this.symbols.includes(buttonName)) {
       if (total && next) {
         this.setState({ operation: buttonName });
-        let newTotal = calculate({ total, next }, operation);
+        const newTotal = calculate({ total, next }, operation);
         this.setState({
           total: newTotal,
           next: null,
@@ -62,7 +71,7 @@ export default class App extends Component {
         if (!this.symbols.includes(displayText.slice(-1))) {
           this.setState({
             operation: buttonName,
-            displayText: this.state.displayText + buttonName,
+            displayText: displayText + buttonName,
           });
         }
       }
@@ -70,51 +79,62 @@ export default class App extends Component {
   }
 
   decimal(buttonName) {
-    let { total, next } = this.state || {};
-    if (buttonName === "." && (total || next)) {
+    const { total, next, displayText } = this.state || {};
+    if (buttonName === '.' && (total || next)) {
       if (total && !next && !total.includes(buttonName)) {
         this.setState({ total: this.state.total + buttonName });
 
-        this.setState({ displayText: this.state.displayText + buttonName });
+        this.setState({ displayText: displayText + buttonName });
       } else if (total && next && !next.includes(buttonName)) {
-        this.setState({ next: this.state.next + buttonName });
+        this.setState({ next: next + buttonName });
 
-        this.setState({ displayText: this.state.displayText + buttonName });
+        this.setState({ displayText: displayText + buttonName });
       }
     }
   }
 
   equal(buttonName) {
-    let { total, next, operation } = this.state || {};
-    if (buttonName === "=") {
+    let {
+      total, next, operation, displayText,
+    } = this.state || {};
+    if (buttonName === '=') {
       if (total && next) {
-        total = calculate({ total, next }, operation);
-      } else if (total && !next) {
         total = calculate({ total, next }, operation);
       }
       total = total.toString();
       this.setState({ displayText: total });
       this.setState({
-        total: total,
+        total,
         next: null,
         afterResult: true,
       });
+      if (total && !next) {
+        this.setState({
+          total: null,
+          next: null,
+          operation,
+          displayText: '',
+        });
+      }
+      if (total && !next && displayText.slice(-1) === '%') {
+        this.setState({ displayText: calculate({ total, next }, '%') });
+      }
     }
   }
 
   clear(buttonName) {
-    if (buttonName === "AC") {
+    if (buttonName === 'AC') {
       this.setState({
         total: null,
         next: null,
-        displayText: "",
+        displayText: '',
       });
     }
   }
 
   changeSymbol(buttonName) {
-    if (buttonName === "+/-") {
-      let { total, next } = this.state || {};
+    if (buttonName === '+/-') {
+      const { total, next } = this.state || {};
       let newValue;
       newValue = calculate({ total, next }, buttonName);
       if (total && next) {
@@ -123,13 +143,10 @@ export default class App extends Component {
           displayText:
             newValue > 0
               ? this.state.total + this.state.operation + newValue.toString()
-              : this.state.total +
-                this.state.operation +
-                "(" +
-                newValue.toString() +
-                ")",
+              : `${
+                this.state.total + this.state.operation
+              }(${newValue.toString()})`,
         });
-        console.log("state 1", this.state);
       } else if (total && !next) {
         this.setState({
           total: newValue,

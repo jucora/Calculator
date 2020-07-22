@@ -1,17 +1,17 @@
-import operate from "./operate";
+import operate from './operate';
 
 const calculate = (
   calculatorObject = { total: null, next: null },
-  buttonNameValue = null
+  buttonNameValue = null,
 ) => {
   const newObject = { ...calculatorObject };
-  if (["+", "-", "x", "÷", "%"].includes(buttonNameValue)) {
+  if (['+', '-', 'x', '÷', '%'].includes(buttonNameValue)) {
     return operate(newObject.total, newObject.next, buttonNameValue);
-  } else if (buttonNameValue === "+/-") {
+  } if (buttonNameValue === '+/-') {
     if (newObject.total && !newObject.next) {
       newObject.total *= -1;
       return newObject.total;
-    } else if (newObject.total && newObject.next) {
+    } if (newObject.total && newObject.next) {
       newObject.next *= -1;
       return newObject.next;
     }

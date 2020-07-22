@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class Button extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class Button extends Component {
         className="button"
         type="button"
         style={{
-          width: `${wide ? "50%" : "25%"}`,
+          width: `${wide ? '50%' : '25%'}`,
           background: `${color || null}`,
         }}
       >
@@ -30,8 +30,8 @@ export default class Button extends Component {
 }
 
 Button.defaultProps = {
-  color: "orange",
-  buttonName: "",
+  color: 'orange',
+  buttonName: '',
   wide: false,
 };
 

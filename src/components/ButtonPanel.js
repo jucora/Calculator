@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import Button from "./Button";
+import React, { Component } from 'react';
+import Button from './Button';
 
 export default class ButtonPanel extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
+
   handleClick(buttonName) {
     return this.props.clickHandler(buttonName);
   }
+
   render() {
     return (
       <div className="buttonPanel">
