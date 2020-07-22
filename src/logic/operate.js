@@ -2,7 +2,12 @@ import Big from "big.js";
 
 const operate = (numberOne, numberTwo, operation) => {
   const value1 = new Big(numberOne);
-  const value2 = new Big(numberTwo);
+  let value2 = null;
+  if (!numberTwo && operation === "%") {
+    value2 = 100;
+  } else {
+    value2 = new Big(numberTwo);
+  }
 
   switch (operation) {
     case "+":
@@ -19,6 +24,9 @@ const operate = (numberOne, numberTwo, operation) => {
         return "Invalid operation!";
       }
     case "%":
+      if (numberOne && !numberTwo) {
+        return value1 / 100;
+      }
       return value1.times(value2).div(100);
     default:
       break;

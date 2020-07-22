@@ -11,13 +11,18 @@ export default class App extends Component {
       total: null,
       next: null,
       displayText: "",
+      afterResult: false,
     };
     this.symbols = ["+", "-", "%", "÷", "x"];
     this.numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   }
 
   number(buttonName) {
-    let { total, next } = this.state || {};
+    let { total, next, afterResult } = this.state || {};
+
+    if (afterResult) {
+      this.setState({ displayText: buttonName, afterResult: false });
+    }
 
     if (this.numbers.includes(buttonName)) {
       this.setState({ displayText: this.state.displayText + buttonName });
@@ -47,10 +52,11 @@ export default class App extends Component {
       if (total && next) {
         this.setState({ operation: buttonName });
         let newTotal = calculate({ total, next }, operation);
-        this.setState({ total: newTotal, next: null });
-
         this.setState({
+          total: newTotal,
+          next: null,
           displayText: newTotal.toString() + buttonName,
+          afterResult: true,
         });
       } else if (total && !next) {
         if (!this.symbols.includes(displayText.slice(-1))) {
@@ -82,6 +88,8 @@ export default class App extends Component {
     let { total, next, operation } = this.state || {};
     if (buttonName === "=") {
       if (total && next) {
+        total = calculate({ total, next }, operation);
+      } else if (total && !next) {
         total = calculate({ total, next }, operation);
       }
       total = total.toString();
