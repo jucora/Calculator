@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from './Button';
+import React from "react";
+import Button from "./Button";
 
 const ButtonPanel = () => (
   <div className="buttonPanel">
@@ -13,7 +13,7 @@ const ButtonPanel = () => (
       <Button buttonName="7" color="#D3D3D5" />
       <Button buttonName="8" color="#D3D3D5" />
       <Button buttonName="9" color="#D3D3D5" />
-      <Button buttonName="X" />
+      <Button buttonName="x" />
     </div>
     <div className="buttonGroup">
       <Button buttonName="4" color="#D3D3D5" />
