@@ -1,5 +1,9 @@
 <h1 align="center">React Calculator</h1>
 
+<p align="center">
+  <img src ='src/img/calculator.gif' alt='Preview of the calculator app'>
+</p>
+
 ## Author
 
 :man: Julian Belmonte
@@ -16,25 +20,25 @@ For more information about the project requirements, please follow the next link
 
 ## How to install the App
 
-1) Please clone the repository by running the next comand in your machine:
+1. Please clone the repository by running the next comand in your machine:
 
 <pre><code>https://github.com/jucora/Calculator.git</code></pre>
 
-2) Next, run the next command to install all project dependencies:
+2. Next, run the next command to install all project dependencies:
 
-      For Yarn: <pre><code>yarn install</code></pre>
-      For npm: <pre><code>npm install</code></pre>
- 
+   For Yarn: <pre><code>yarn install</code></pre>
+   For npm: <pre><code>npm install</code></pre>
+
 ## How to run the app locally
 
-1) Get into the folder of the project by running the next command:
+1. Get into the folder of the project by running the next command:
 
 <pre><code>cd react-calculator</code></pre>
 
-2) Start your local server by running the next command:
+2. Start your local server by running the next command:
 
-      For Yarn: <pre><code>yarn start</code></pre>
-      For npm: <pre><code>npm start</code></pre>
+   For Yarn: <pre><code>yarn start</code></pre>
+   For npm: <pre><code>npm start</code></pre>
 
 ## :computer: Library, Languages and technologies
 
@@ -47,3 +51,11 @@ For more information about the project requirements, please follow the next link
 - big.js
 - prop-types
 - npm
+
+## Report Issues
+
+Please feel free to make a contribution, report any issue, feature request or provide any feedback. Click [here](https://github.com/jucora/Calculator/issues)
+
+## Support
+
+Feel free to drop a like, that would support me a lot.
