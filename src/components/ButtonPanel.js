@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
 export default class ButtonPanel extends Component {
@@ -8,7 +9,8 @@ export default class ButtonPanel extends Component {
   }
 
   handleClick(buttonName) {
-    return this.props.clickHandler(buttonName);
+    const { clickHandler } = this.props;
+    return clickHandler(buttonName);
   }
 
   render() {
@@ -104,3 +106,11 @@ export default class ButtonPanel extends Component {
     );
   }
 }
+
+ButtonPanel.defaultProps = {
+  clickHandler: null,
+};
+
+ButtonPanel.propTypes = {
+  clickHandler: PropTypes.func,
+};

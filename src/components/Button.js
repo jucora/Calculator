@@ -8,7 +8,9 @@ export default class Button extends Component {
   }
 
   handleClick() {
-    return this.props.clickHandler(this.props.buttonName);
+    const { clickHandler, buttonName } = this.props;
+    return clickHandler(buttonName);
+    // return this.props.clickHandler(this.props.buttonName);
   }
 
   render() {
@@ -33,10 +35,12 @@ Button.defaultProps = {
   color: 'orange',
   buttonName: '',
   wide: false,
+  clickHandler: null,
 };
 
 Button.propTypes = {
   buttonName: PropTypes.string,
   color: PropTypes.string,
   wide: PropTypes.bool,
+  clickHandler: PropTypes.func,
 };
