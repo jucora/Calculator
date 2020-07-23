@@ -22,7 +22,6 @@ export default class App extends Component {
       total: buttonName,
       next: null,
       displayText: buttonName,
-      afterResult: false,
     });
   }
 
@@ -89,7 +88,7 @@ export default class App extends Component {
     let { total } = this.state;
     if (total && next && displayText !== "") {
       total = calculate({ total, next }, operation);
-      this.setState({ displayText: "= " + total.toString() });
+      this.setState({ displayText: `= ${total.toString()}` });
       this.setState({
         total: null,
         next: null,
@@ -104,7 +103,9 @@ export default class App extends Component {
       });
     }
     if (total && !next && displayText.slice(-1) === "%") {
-      this.setState({ displayText: calculate({ total, next }, "%") });
+      this.setState({
+        displayText: calculate({ total, next }, "%").toString(),
+      });
     }
     setTimeout(() => {
       this.setState({ total: null, next: null, displayText: "" });

@@ -3,37 +3,41 @@ $whiteColor: #fff;
 $generalHeight: 100px;
 $generalWidth: 700px;
 
-.app {
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  width: $generalWidth;
+body {
+  background: black;
 
-  .display {
-    background: $displayBackground;
+  .app {
+    margin: 0 auto;
     display: flex;
-    height: $generalHeight;
-    justify-content: flex-end;
-    width: $generalWidth;
-    color: $whiteColor;
-    font-weight: bold;
-    font-size: 50px;
-    padding: 20px;
-    align-items: center;
-  }
-
-  .buttonPanel {
     flex-wrap: wrap;
-    display: flex;
+    width: $generalWidth;
 
-    .buttonGroup {
+    .display {
+      background: $displayBackground;
+      display: flex;
+      height: $generalHeight;
+      justify-content: flex-end;
       width: $generalWidth;
+      color: $whiteColor;
+      font-weight: bold;
+      font-size: 50px;
+      padding: 20px;
+      align-items: center;
     }
 
-    .button {
-      border: 1px solid $whiteColor;
-      height: $generalHeight;
-      font-size: 32px;
+    .buttonPanel {
+      flex-wrap: wrap;
+      display: flex;
+
+      .buttonGroup {
+        width: $generalWidth;
+      }
+
+      .button {
+        border: 1px solid $whiteColor;
+        height: $generalHeight;
+        font-size: 32px;
+      }
     }
   }
 }
