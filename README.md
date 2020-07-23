@@ -51,3 +51,11 @@ For more information about the project requirements, please follow the next link
 - big.js
 - prop-types
 - npm
+
+## Report Issues
+
+Please feel free to make a contribution, report any issue, feature request or provide any feedback. Click [here](https://github.com/jucora/Calculator/issues)
+
+## Support
+
+Feel free to drop a like, that would support me a lot.
