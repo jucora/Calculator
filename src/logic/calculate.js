@@ -1,26 +1,24 @@
 import operate from './operate';
 
 const calculate = (
-  calculatorObject = { total: null, next: null, operation: null },
-  buttonName = null,
+  calculatorObject = { total: null, next: null },
+  buttonNameValue = null,
 ) => {
   const newObject = { ...calculatorObject };
-  if (['+', '-', 'X', '÷', '% '].includes(buttonName)) {
-    newObject.total = operate(
-      newObject.total,
-      newObject.next,
-      newObject.operation,
-    );
-  } else if (buttonName === '+/-') {
-    newObject.total *= -1;
-    newObject.next *= -1;
-  } else if (buttonName === 'AC') {
-    newObject.total = 0;
-    newObject.next = 0;
+  if (['+', '-', 'x', '÷', '%'].includes(buttonNameValue)) {
+    return operate(newObject.total, newObject.next, buttonNameValue);
+  } if (buttonNameValue === '+/-') {
+    if (newObject.total && !newObject.next) {
+      newObject.total *= -1;
+      return newObject.total;
+    } if (newObject.total && newObject.next) {
+      newObject.next *= -1;
+      return newObject.next;
+    }
   } else {
     return 0;
   }
-  return newObject;
+  return newObject.total;
 };
 
 export default calculate;
