@@ -4,6 +4,8 @@
   <img src ='src/img/calculator.gif' alt='Preview of the calculator app'>
 </p>
 
+# :arrow_right: [Live Demo](https://calculator-react-julian.herokuapp.com/)
+
 ## Author
 
 :man: Julian Belmonte
